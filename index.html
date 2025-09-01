@@ -4,504 +4,884 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antrag: ELUMA'S Finest Jerky - GTA RP Fraktion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --color-primary: #8B0000; /* Dunkelrot */
-            --color-secondary: #DAA520; /* Gold */
-            --color-accent: #2F4F4F;   /* Dunkles Slate für Details */
-            --color-dark: #1A1A1A; /* Fast Schwarz */
-            --color-light: #F5F5DC; /* Beige */
+            --color-primary: #8B0000;
+            --color-primary-light: #a52a2a;
+            --color-secondary: #DAA520;
+            --color-secondary-light: #f0c050;
+            --color-accent: #2F4F4F;
+            --color-dark: #121212;
+            --color-darker: #0a0a0a;
+            --color-light: #F5F5DC;
+            --color-gray: #2a2a2a;
+            --color-light-gray: #3a3a3a;
             --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             font-family: var(--font-main);
-            background-color: var(--color-dark);
+            background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
             color: var(--color-light);
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
         header {
-            background-color: rgba(26, 26, 26, 0.95);
-            padding: 1rem 2rem;
-            position: sticky;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
             top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--color-secondary);
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--color-secondary);
-            z-index: 100;
+            padding: 0 20px;
         }
+
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
+
+        .logo-icon {
+            color: var(--color-secondary);
+            font-size: 2rem;
+        }
+
         .logo h1 {
             color: var(--color-secondary);
             margin: 0;
             font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .logo span {
             color: var(--color-light);
+            font-weight: 300;
         }
+
         nav ul {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding: 0;
+            gap: 2rem;
         }
-        nav li {
-            margin-left: 2rem;
-        }
+
         nav a {
             color: var(--color-light);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
         }
+
         nav a:hover {
             color: var(--color-secondary);
+            background: rgba(218, 165, 32, 0.1);
         }
+
+        /* Hero Section */
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x600/1A1A1A/DAA520?text=From+The+Streets+To+Success');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
-            height: 50vh;
+            background-attachment: fixed;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 2rem;
+            padding: 6rem 2rem 4rem;
+            position: relative;
         }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--color-dark));
+        }
+
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             color: var(--color-secondary);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease;
         }
+
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             max-width: 800px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
         }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-secondary);
+            border: 2px solid var(--color-secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary);
+            color: var(--color-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(218, 165, 32, 0.3);
+        }
+
+        /* Sections */
         section {
-            padding: 4rem 2rem;
+            padding: 6rem 0;
+            scroll-margin-top: 80px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        section:nth-child(even) {
+            background: rgba(42, 42, 42, 0.3);
         }
-        h2 {
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
             color: var(--color-secondary);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            border-bottom: 1px solid var(--color-accent);
-            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
         }
-        h3 {
-            color: var(--color-secondary);
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--color-primary);
+            margin: 1rem auto;
+            border-radius: 2px;
         }
-        .application {
-            background-color: #2A2A2A;
+
+        /* Cards */
+        .card {
+            background: var(--color-gray);
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--color-accent);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--color-light-gray);
+            height: 100%;
         }
-        .app-section {
-            margin-bottom: 2.5rem;
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--color-secondary);
         }
-        .app-item {
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 1.5rem;
         }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Founders Section */
+        .founders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .founder-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .gang-past {
+            background: rgba(139, 0, 0, 0.2);
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Business Model */
+        .business-model {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .legal, .illegal {
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .legal {
+            background: linear-gradient(135deg, rgba(44, 82, 130, 0.3) 0%, rgba(43, 108, 176, 0.3) 100%);
+            border: 1px solid rgba(43, 108, 176, 0.5);
+        }
+
+        .illegal {
+            background: linear-gradient(135deg, rgba(116, 42, 42, 0.3) 0%, rgba(229, 62, 62, 0.3) 100%);
+            border: 1px solid rgba(229, 62, 62, 0.5);
+        }
+
+        /* Forms */
+        .app-item {
+            margin-bottom: 2rem;
+        }
+
         .app-item label {
             display: block;
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--color-secondary);
         }
+
         .app-item input[type="text"],
         .app-item textarea {
             width: 100%;
-            padding: 0.8rem;
-            background-color: #333;
-            border: 1px solid #555;
-            border-radius: 4px;
+            padding: 1rem;
+            background: var(--color-light-gray);
+            border: 1px solid var(--color-accent);
+            border-radius: 8px;
             color: var(--color-light);
             font-family: var(--font-main);
+            transition: var(--transition);
         }
-        .app-item textarea {
-            min-height: 100px;
-            resize: vertical;
+
+        .app-item input[type="text"]:focus,
+        .app-item textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
         }
-        .ooc-note {
-            background-color: #333;
-            border-left: 4px solid var(--color-primary);
-            padding: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
-            border-radius: 0 4px 4px 0;
-        }
-        .founders {
+
+        /* Grid Layouts */
+        .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        @media (max-width: 768px) {
-            .founders {
-                grid-template-columns: 1fr;
-            }
-        }
-        .founder-card {
-            background-color: #2A2A2A;
-            padding: 1.5rem;
-            border-radius: 5px;
-            text-align: center;
-            border-top: 4px solid var(--color-secondary);
-            border: 1px solid var(--color-accent);
-        }
-        .founder-card h3 {
-            margin-top: 0;
-        }
-        .gang-past {
-            background-color: var(--color-accent);
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 5px;
-        }
-        .gang-past h4 {
-            color: var(--color-secondary);
-            margin-top: 0;
-        }
-        .business-model {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
-        @media (max-width: 768px) {
-            .business-model {
-                grid-template-columns: 1fr;
-            }
-        }
-        .legal, .illegal {
-            padding: 1.5rem;
-            border-radius: 5px;
-        }
-        .legal {
-            background-color: #2c5282;
-            border: 1px solid #2b6cb0;
-        }
-        .illegal {
-            background-color: #742a2a;
-            border: 1px solid #e53e3e;
-        }
-        .detail-grid {
-            display: grid;
+
+        .grid-2 {
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
         }
-        .detail-card {
-            background-color: #2A2A2A;
-            padding: 1.5rem;
-            border-radius: 5px;
-            border: 1px solid var(--color-accent);
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
-        .detail-card h4 {
-            color: var(--color-secondary);
-            margin-top: 0;
-            border-bottom: 1px solid #444;
-            padding-bottom: 0.5rem;
+
+        /* Footer */
+        footer {
+            background: var(--color-darker);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid var(--color-accent);
         }
-        .hierarchy {
+
+        .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 3rem;
+            text-align: left;
+            margin-bottom: 3rem;
         }
-        .rank {
-            background-color: #2A2A2A;
-            padding: 1.5rem;
-            border-radius: 5px;
-            border-left: 4px solid var(--color-secondary);
-            border: 1px solid var(--color-accent);
+
+        .footer-section h3 {
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
         }
-        .goals {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
         }
-        .goal-card {
-            background-color: #2A2A2A;
-            padding: 1.5rem;
-            border-radius: 5px;
-            border: 1px solid var(--color-accent);
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
         }
-        footer {
-            background-color: #111;
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid #333;
+
+        .social-links a {
+            color: var(--color-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
         }
-        .disclaimer {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 2rem;
+
+        .social-links a:hover {
+            color: var(--color-secondary);
+            transform: translateY(-3px);
         }
-        .submit-btn {
-            background-color: var(--color-primary);
-            color: white;
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .founders,
+            .business-model,
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Special Elements */
+        .feature-text {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+            margin: 3rem 0;
             border: none;
-            padding: 1rem 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(218, 165, 32, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            line-height: 1;
+        }
+
+        .stat-label {
             font-size: 1.1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 2rem auto;
-            transition: background-color 0.3s ease;
-        }
-        .submit-btn:hover {
-            background-color: #a00;
-        }
-        .story-hook {
-            background-color: #2A2A2A;
-            border-left: 4px solid var(--color-secondary);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 5px 5px 0;
-            border: 1px solid var(--color-accent);
-        }
-        .demon-trait {
-            color: #ff6666;
-            font-weight: bold;
+            opacity: 0.8;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
+    <!-- Header & Navigation -->
     <header>
-        <div class="logo">
-            <h1>FRAKTIONSANTRAG: <span>ELUMA'S FINEST JERKY</span></h1>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cow"></i>
+                </div>
+                <h1>ELUMA'S <span>FINEST JERKY</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#application"><i class="fas fa-users"></i> Antragsteller</a></li>
+                    <li><a href="#founders"><i class="fas fa-crown"></i> Gründer</a></li>
+                    <li><a href="#concept"><i class="fas fa-chess-board"></i> Konzept</a></li>
+                    <li><a href="#locations"><i class="fas fa-map-marker-alt"></i> Standorte</a></li>
+                    <li><a href="#hierarchy"><i class="fas fa-sitemap"></i> Struktur</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#application">Antragsteller</a></li>
-                <li><a href="#founders">Gründer</a></li>
-                <li><a href="#concept">Konzept</a></li>
-                <li><a href="#locations">Standorte</a></li>
-                <li><a href="#hierarchy">Struktur</a></li>
-                <li><a href="#goals">Ziele</a></li>
-            </ul>
-        </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h2>VON DER STRASSE ZUM ERFOLG</h2>
         <p>Das ehemalige 44Street-Duo baut ein legales Imperium auf – mit den Skills der alten Tage.</p>
+        <div class="hero-cta">
+            <a href="#application" class="btn btn-primary">
+                <i class="fas fa-file-alt"></i> Antrag stellen
+            </a>
+            <a href="#concept" class="btn btn-secondary">
+                <i class="fas fa-eye"></i> Konzept entdecken
+            </a>
+        </div>
     </section>
 
+    <!-- Stats Section -->
+    <section>
+        <div class="container">
+            <div class="stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Geschäftsfelder</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Hauptstandorte</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Kundenpartner</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Street Credibility</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Section -->
     <section id="application">
         <div class="container">
-            <h2>1. ANTRAYSTELLER (OOC - OUT OF CHARACTER)</h2>
-            <div class="application">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Antragsteller</h2>
+                <p>Out of Character Informationen</p>
+            </div>
+            
+            <div class="card">
                 <div class="app-section">
-                    <div class="app-item">
-                        <label for="applicant-name">Name (OOC):</label>
-                        <input type="text" id="applicant-name" value="Elias & Luma" readonly>
+                    <div class="grid grid-2">
+                        <div class="app-item">
+                            <label for="applicant-name"><i class="fas fa-user"></i> Name (OOC):</label>
+                            <input type="text" id="applicant-name" value="Elias & Luma" readonly>
+                        </div>
+                        <div class="app-item">
+                            <label for="applicant-id"><i class="fas fa-id-card"></i> Charakter-ID:</label>
+                            <input type="text" id="applicant-id" placeholder="z.B. 12345 & 67890">
+                        </div>
                     </div>
-                    <div class="app-item">
-                        <label for="applicant-id">Charakter-ID (falls benötigt):</label>
-                        <input type="text" id="applicant-id" placeholder="z.B. 12345 & 67890">
-                    </div>
-                    <div class="app-item">
-                        <label for="applicant-discord">Kontakt (Discord):</label>
-                        <input type="text" id="applicant-discord" placeholder="EureDiscordTags">
-                    </div>
-                    <div class="app-item">
-                        <label for="applicant-experience">Bisherige RP-Erfahrung:</label>
-                        <textarea id="applicant-experience" placeholder="Beschreibt eure bisherige RP-Erfahrung als Team"></textarea>
+                    
+                    <div class="grid grid-2">
+                        <div class="app-item">
+                            <label for="applicant-discord"><i class="fab fa-discord"></i> Discord:</label>
+                            <input type="text" id="applicant-discord" placeholder="EureDiscordTags">
+                        </div>
+                        <div class="app-item">
+                            <label for="applicant-experience"><i class="fas fa-history"></i> RP-Erfahrung:</label>
+                            <textarea id="applicant-experience" placeholder="Beschreibt eure bisherige RP-Erfahrung als Team"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <h2 id="founders">2. DAS GRÜNDER-DUO: EX-44STREET</h2>
+    <!-- Founders Section -->
+    <section id="founders">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-crown"></i> Das Gründer-Duo</h2>
+                <p>Ex-44Street Legenden mit einer Vision</p>
+            </div>
+            
             <div class="founders">
-                <div class="founder-card">
-                    <h3>Elias "The Butcher"</h3>
-                    <p><strong>Der ehemalige OG & Strategie-Experte</strong></p>
-                    <p>Elias war eine respektierte Größe in der 44Street. Sein Spitzname kommt von seiner Zeit in der Fleischverarbeitung, die die Gang als Front nutzte. Er kennt das Fleischerhandwerk von der Pike auf und versteht es, Abläufe effizient zu organisieren. Nach der Auflösung der Gang sah er die Chance, das Wissen aus beiden Welten zu nutzen: Die Härte der Straße und die Effizienz eines legitimen Business. Er ist der Macher, der für die Produktion und Logistik verantwortlich ist.</p>
+                <div class="card founder-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <h3>Elias "The Butcher"</h3>
+                    </div>
+                    <p><strong class="feature-text">Der ehemalige OG & Strategie-Experte</strong></p>
+                    <p>Elias war eine respektierte Größe in der 44Street. Sein Spitzname kommt von seiner Zeit in der Fleischverarbeitung, die die Gang als Front nutzte. Er kennt das Fleischerhandwerk von der Pike auf und versteht es, Abläufe effizient zu organisieren.</p>
+                    
                     <div class="gang-past">
-                        <h4>🎯 44Street-Vergangenheit:</h4>
-                        <p><strong>Rolle:</strong> OG / Logistik & Front-Betrieb (Fleischerei)<br>
-                        <strong>Skills:</strong> Fleischerhandwerk, Logistik, Führung, Straßenpolitik, Respekt<br>
-                        <strong>Motivation zum Ausstieg:</strong> Chance auf ein legales, erfolgreiches Business mit den erlernten Fähigkeiten.</p>
+                        <h4><i class="fas fa-history"></i> 44Street-Vergangenheit:</h4>
+                        <p><strong>Rolle:</strong> OG / Logistik & Front-Betrieb<br>
+                        <strong>Skills:</strong> Fleischerhandwerk, Logistik, Führung, Straßenpolitik<br>
+                        <strong>Motivation:</strong> Chance auf ein legales, erfolgreiches Business</p>
                     </div>
                 </div>
-                <div class="founder-card">
-                    <h3>Luma "The Siren"</h3>
-                    <p><strong>Die Meisterin der Kommunikation & Expansion</strong></p>
-                    <p>Luma war das soziale Asset der 44Street. Sie konnte Kontakte knüpfen, Deals aushandeln und Informationen beschaffen wie keine Zweite. Ihr Lächeln ist eine Waffe, ihr Vertrauen eine gefährliche Falle für diejenigen, die gegen sie arbeiten. Sie sieht in der Auflösung der Gang keine Niederlage, sondern eine once-in-a-lifetime Gelegenheit. Ihr Ziel ist es, "Eluma's Finest" zur bekanntesten Marke in Southern San Andreas zu machen – mit allen Mitteln. Sie ist die öffentliche Face des Unternehmens, zuständig für Vertrieb, Marketing und "Kundenakquise".</p>
+
+                <div class="card founder-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <h3>Luma "The Siren"</h3>
+                    </div>
+                    <p><strong class="feature-text">Die Meisterin der Kommunikation & Expansion</strong></p>
+                    <p>Luma war das soziale Asset der 44Street. Sie konnte Kontakte knüpfen, Deals aushandeln und Informationen beschaffen wie keine Zweite. Ihr Lächeln ist eine Waffe, ihr Vertrauen eine gefährliche Falle für diejenigen, die gegen sie arbeiten.</p>
+                    
                     <div class="gang-past">
-                        <h4>🎯 44Street-Vergangenheit:</h4>
-                        <p><strong>Rolle:</strong> Information Broker / Negotiator / Face<br>
-                        <strong>Skills:</strong> Menschen lesen, Verhandeln, Überzeugen, Erpressen, Charme<br>
-                        <strong>Motivation zum Ausstieg:</strong> Eine legitime Plattform für ihre Talente nutzen und ein Imperium aufbauen.</p>
+                        <h4><i class="fas fa-history"></i> 44Street-Vergangenheit:</h4>
+                        <p><strong>Rolle:</strong> Information Broker / Negotiator<br>
+                        <strong>Skills:</strong> Menschen lesen, Verhandeln, Überzeugen, Erpressen<br>
+                        <strong>Motivation:</strong> Eine legitime Plattform für ihre Talente nutzen</p>
                     </div>
                 </div>
             </div>
-            <p style="text-align: center; font-style: italic;">Ihre Vergangenheit ist ihr Kapital. Sie wissen, wie man in Los Santos überlebt und erfolgreich ist.</p>
+        </div>
+    </section>
 
-            <h2>3. FRAKTIONSKONZEPT: DAS IMPERIUM</h2>
-            <div class="app-section">
-                <div class="app-item">
-                    <label for="faction-name">Fraktionsname:</label>
-                    <input type="text" id="faction-name" value="ELUMA'S Finest Jerky" readonly>
-                </div>
-                <div class="app-item">
-                    <label>Detailliertes Geschäftsmodell:</label>
-                    <div class="business-model">
-                        <div class="legal">
-                            <h3>✅ Legale Geschäftsfelder</h3>
-                            <ul>
-                                <li><strong>Hauptproduktion:</strong> Herstellung von High-Quality Beef Jerky in verschiedenen Geschmacksrichtungen (Original, Chili, Honey BBQ, Smoke).</li>
-                                <li><strong>Großhandel:</strong> Belieferung von Supermärkten (LTD, 24/7), Tankstellen (RON, Xero Gas), und Bars in ganz LS.</li>
-                                <li><strong>Einzelhandel:</strong> Betrieb eines eigenen Fabrikverkaufs mit Degustation und Merchandise (T-Shirts, Caps).</li>
-                                <li><strong>Landwirtschaft:</strong> Eigene kleine Ranch in Grapeseed zur Zucht von Angus-Rindern für höchste Qualität.</li>
-                                <li><strong>Catering:</strong> Belieferung von lokalen Events und Autotreffs.</li>
-                            </ul>
+    <!-- Concept Section -->
+    <section id="concept">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-chess-board"></i> Geschäftskonzept</h2>
+                <p>Das ELUMA'S Imperium - Legal first, aber immer street smart</p>
+            </div>
+            
+            <div class="business-model">
+                <div class="legal card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-check-circle"></i>
                         </div>
-                        <div class="illegal">
-                            <h3>⚠️ Illegale Erweiterungen (RP-abhängig)</h3>
-                            <ul>
-                                <li><strong>Geldwäsche:</strong> Nutzung des cash-lastigen Geschäfts, um Ersparnisse aus der Gang-Zeit zu legitimieren.</li>
-                                <li><strong>Schmuggel:</strong> Geheimfächer in den Lieferwagen für den Transport von Waren, Waffen oder Informationen.</li>
-                                <li><strong>Informationsbeschaffung:</strong> Nutzung des Vertriebsnetzwerks, um Gespräche in Shops und Bars mitzuhören.</li>
-                                <li><strong>"Schutzgebühren":</strong> Angebot von "Premium-Abos" für Geschäfte in ehemaligen 44Street-Gebieten.</li>
-                                <li><strong>Marktmacht:</strong> "Überzeugungsarbeit" leisten, damit Konkurrenzprodukte aus den Regalen verschwinden.</li>
-                            </ul>
-                        </div>
+                        <h3>✅ Legale Geschäftsfelder</h3>
                     </div>
+                    <ul>
+                        <li><i class="fas fa-industry"></i> <strong>Hauptproduktion:</strong> High-Quality Beef Jerky</li>
+                        <li><i class="fas fa-truck"></i> <strong>Großhandel:</strong> Belieferung von Supermärkten & Tankstellen</li>
+                        <li><i class="fas fa-store"></i> <strong>Einzelhandel:</strong> Eigener Fabrikverkauf mit Merchandise</li>
+                        <li><i class="fas fa-tractor"></i> <strong>Landwirtschaft:</strong> Eigene Ranch in Grapeseed</li>
+                        <li><i class="fas fa-utensils"></i> <strong>Catering:</strong> Belieferung von Events und Autotreffs</li>
+                    </ul>
                 </div>
 
-                <div class="app-item">
-                    <label for="faction-lore">Hintergrundgeschichte & Philosophie (IC - Lore für San Andreas):</label>
-                    <textarea id="faction-lore" readonly>
-Die 44Street war einmal Familie. Doch die Zeiten änderten sich. Anstatt in sinnlosen Kämpfen unterzugehen, einigte man sich friedlich auf eine Auflösung. Jeder bekam seinen Anteil, und jeder ging seiner Wege.
-
-Für Elias und Luma war dies die Freiheit, auf die sie gewartet hatten. Mit ihrem Anteil, ihrem Wissen und ihren einzigartigen Fähigkeiten pachteten sie eine verlassene Fleischverarbeitungsanlage in Davis. Elias' Expertise im Handwerk und Lumas Talent für Geschäfte und Kontakte waren die perfekte Kombination.
-
-"Eluma's Finest" ist mehr als nur Jerky. Es ist ein Symbol für ihren Neuanfang. Ein Beweis dafür, dass die Skills der Straße auch in der legalen Welt zu Erfolg führen können. Sie betreiben ein legitimes Business, aber sie spielen nicht nach den üblichen Regeln. Sie konkurrieren nicht, sie dominieren. Sie bitten nicht, sie verhandeln aus einer Position der Stärke. Ihr Ziel ist es, ein Imperium aufzubauen, das ihnen Respekt, Wohlstand und vor allem Unabhängigkeit bringt – alles Dinge, die eine Gang nie wirklich bieten konnte.
-                    </textarea>
+                <div class="illegal card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>⚠️ Illegale Erweiterungen</h3>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-money-bill-wave"></i> <strong>Geldwäsche:</strong> Legitimierung von Gang-Ersparnissen</li>
+                        <li><i class="fas fa-box-secret"></i> <strong>Schmuggel:</strong> Geheimfächer in Lieferwagen</li>
+                        <li><i class="fas fa-ear-listen"></i> <strong>Informationsbeschaffung:</strong> Vertriebsnetzwerk als Spionage-Tool</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>"Schutzgebühren":</strong> Premium-Abos für Geschäfte</li>
+                        <li><i class="fas fa-chess-queen"></i> <strong>Marktmacht:</strong> "Überzeugungsarbeit" gegen Konkurrenz</li>
+                    </ul>
                 </div>
             </div>
 
-            <h2 id="locations">4. STANDORTE & OPERATIONEN</h2>
-            <div class="detail-grid">
-                <div class="detail-card">
-                    <h4>🏭 Hauptquartier & Fabrik</h4>
+            <hr class="divider">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Hintergrundgeschichte & Philosophie</h3>
+                </div>
+                <p>Die 44Street war einmal Familie. Doch die Zeiten änderten sich. Anstatt in sinnlosen Kämpfen unterzugehen, einigte man sich friedlich auf eine Auflösung. Für Elias und Luma war dies die Freiheit, auf die sie gewartet hatten.</p>
+                <p>"Eluma's Finest" ist mehr als nur Jerky. Es ist ein Symbol für ihren Neuanfang. Ein Beweis dafür, dass die Skills der Straße auch in der legalen Welt zu Erfolg führen können. Sie betreiben ein legitimes Business, aber sie spielen nicht nach den üblichen Regeln.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-map-marker-alt"></i> Standorte & Operationen</h2>
+                <p>Das Netzwerk des ELUMA'S Imperiums</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>🏭 Hauptquartier & Fabrik</h3>
+                    </div>
                     <p><strong>Ort:</strong> Davis, nahe dem Schlachthof<br>
                     <strong>Funktion:</strong> Primäre Produktionsstätte. Hier wird das Fleisch geschnitten, mariniert, getrocknet und verpackt. Enthält Büros und den Fabrikverkauf.</p>
                 </div>
-                <div class="detail-card">
-                    <h4>🐄 Eluma Ranch</h4>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <h3>🐄 Eluma Ranch</h3>
+                    </div>
                     <p><strong>Ort:</strong> Grapeseed<br>
                     <strong>Funktion:</strong> Eigene Rinderzucht zur Qualitätskontrolle und Unabhängigkeit von Lieferanten. Dient auch als Rückzugsort.</p>
                 </div>
-                <div class="detail-card">
-                    <h4>🚚 Vertrieb & Logistik</h4>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>🚚 Vertrieb & Logistik</h3>
+                    </div>
                     <p><strong>Fahrzeuge:</strong> 2x Mule, 1x Pounder, 2x Sadler<br>
                     <strong>Funktion:</strong> Tägliche Belieferung der Kunden. Die Routen sind optimiert, um Gebiete abzudecken und Präsenz zu zeigen.</p>
                 </div>
-                <div class="detail-card">
-                    <h4>🤝 Stammkunden & Partner</h4>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>🤝 Stammkunden & Partner</h3>
+                    </div>
                     <p><strong>Geschäfte:</strong> Alle LTDs und 24/7s in Southern LS, selektive Tankstellen.<br>
                     <strong>Bars:</strong> Yellow Jack, Tequi-la-la.<br>
-                    <strong>Besonderheit:</strong> Enge Beziehung zum Bayview Lodge (Großabnehmer).</p>
+                    <strong>Besonderheit:</strong> Enge Beziehung zum Bayview Lodge.</p>
                 </div>
             </div>
-
-            <h2 id="hierarchy">5. FRAKTIONSSTRUKTUR & ROLLEN (RANKS)</h2>
-            <div class="hierarchy">
-                <div class="rank">
-                    <h3>Rank 5: Inhaber (Elias & Luma)</h3>
-                    <p><strong>"The Founders"</strong> - Treffen alle strategischen Entscheidungen. Elias (Produktion/Logistik), Luma (Vertrieb/Expansion).</p>
-                </div>
-                <div class="rank">
-                    <h3>Rank 4: Manager</h3>
-                    <p><strong>"Head of Operations" / "Head of Sales"</strong> - Vertraute Leute, die die täglichen Abläufe leiten. Wissen um die illegalen Aspekte.</p>
-                </div>
-                <div class="rank">
-                    <h3>Rank 3: Specialist</h3>
-                    <p><strong>"Route Manager" / "Acquisition Manager"</strong> - Zuständig für Logistik bzw. die Akquise neuer Geschäftspartner (mit Druck).</p>
-                </div>
-                <div class="rank">
-                    <h3>Rank 2: Worker</h3>
-                    <p><strong>"Driver" / "Production Line"</strong> - Fahrer und Fabrikarbeiter. Wissen i.d.R. nichts Illegales. Werden fair bezahlt.</p>
-                </div>
-                <div class="rank">
-                    <h3>Rank 1: Associate</h3>
-                    <p><strong>"Taste Tester" / "Intern"</strong> - Neue Mitglieder auf Probe. Werden von Luma auf Loyalität und Verschwiegenheit geprüft.</p>
-                </div>
-            </div>
-
-            <h2 id="goals">6. ZIELE DER FRAKTION</h2>
-            <div class="goals">
-                <div class="goal-card">
-                    <h3>Kurzfristig (IC)</h3>
-                    <ul>
-                        <li>Aufbau eines loyalen Kerns an Mitarbeitern.</li>
-                        <li>Eroberung von 70% Marktanteil im Jerky-Segment in Süd-LS.</li>
-                        <li>Eröffnung des ersten "Eluma's Finest" Flagship-Stores in La Mesa.</li>
-                        <li>Aufbau eines "Beratungs"-Geschäfts für andere Ex-Gangler, die aussteigen wollen.</li>
-                    </ul>
-                </div>
-                <div class="goal-card">
-                    <h3>Langfristig (IC)</h3>
-                    <ul>
-                        <li>Expansion in den Norden (Paleto Bay) und Osten (Sandy Shores).</li>
-                        <li>Eigenes Fleischwerk für weitere Produkte (Hamburger Patties, Wurst).</li>
-                        <li>Listung der Produkte im "Ponsonby's"-Katalog.</li>
-                        <li>Vollständige Legitimierung aller Einnahmen und Investition in Immobilien.</li>
-                    </ul>
-                </div>
-                <div class="goal-card">
-                    <h3>OOC (Out of Character)</h3>
-                    <ul>
-                        <li>Detailliertes Wirtschafts-RP mit Lieferketten und Kundenbeziehungen bieten.</li>
-                        <li>Spannende RP-Hooks für Polizei (Wettbewerbsverzerrung), andere Businesses (Kooperation/Rivalität) und Bürger (Jobs) schaffen.</li>
-                        <li>Eine positive Entwicklung von Ex-Kriminellen zeigen, die ihr Wissen für legitime Zwecke nutzen.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="story-hook">
-                <h3>🎭 Potenzielle Story-Hooks:</h3>
-                <ul>
-                    <li><strong>Konkurrenzkampf:</strong> Ein großer Konzern (z.B. Cluckin' Bell) bringt ein eigenes Jerky auf den Markt.</li>
-                    <li><strong>Lieferantenproblem:</strong> Ein Fleischlieferant liefert minderwertige Ware und muss "überzeugt" werden.</li>
-                    <li><strong>Polizeiermittlungen:</strong> Ein aufmerksamer Detective bemerkt die ungewöhnlich schnelle Expansion.</li>
-                    <li><strong>Ex-Gangler:</strong> Ehemalige 44Street-Mitglieder bitten um einen Job oder wollen Schutzgeld.</li>
-                    <li><strong>Investoren:</strong> Ein zwielichtiger Investor bietet Kapital für Expansion an – mit strings attached.</li>
-                </ul>
-            </div>
-
-            <div class="ooc-note">
-                <p>💡 <strong>Hinweis an die Server-Administration:</strong> Dieser "Web-Antrag" dient als kreative und vollständige Vorstellung unserer Fraktionsidee. Die eingegebenen Daten sind nur zur Demonstration funktionslos. Der eigentliche Antrag sollte über die offiziellen Kanäle des Servers eingereicht werden.</p>
-            </div>
-
-            <button class="submit-btn" onclick="alert('Antrag von Elias & Luma wurde symbolisch eingereicht! Bitte reicht diesen Inhalt über die offiziellen Server-Kanäle ein.');">Antrag Einreichen</button>
         </div>
     </section>
 
+    <!-- Hierarchy Section -->
+    <section id="hierarchy">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-sitemap"></i> Fraktionsstruktur</h2>
+                <p>Klare Hierarchie für maximale Effizienz</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Rank 5: Inhaber</h3>
+                    </div>
+                    <p><strong>"The Founders"</strong> - Treffen alle strategischen Entscheidungen. Elias (Produktion/Logistik), Luma (Vertrieb/Expansion).</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Rank 4: Manager</h3>
+                    </div>
+                    <p><strong>"Head of Operations" / "Head of Sales"</strong> - Vertraute Leute, die die täglichen Abläufe leiten. Wissen um die illegalen Aspekte.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Rank 3: Specialist</h3>
+                    </div>
+                    <p><strong>"Route Manager" / "Acquisition Manager"</strong> - Zuständig für Logistik bzw. die Akquise neuer Geschäftspartner (mit Druck).</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Rank 2: Worker</h3>
+                    </div>
+                    <p><strong>"Driver" / "Production Line"</strong> - Fahrer und Fabrikarbeiter. Wissen i.d.R. nichts Illegales. Werden fair bezahlt.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>Rank 1: Associate</h3>
+                    </div>
+                    <p><strong>"Taste Tester" / "Intern"</strong> - Neue Mitglieder auf Probe. Werden von Luma auf Loyalität und Verschwiegenheit geprüft.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 ELUMA'S Finest Jerky | Ein Fraktionsantrag für GTA 5 Roleplay</p>
-            <p class="disclaimer">
-                Disclaimer: Dies ist ein fiktiver Fraktionsantrag für ein GTA 5 Rollenspiel (Roleplay). ELUMA'S Finest Jerky ist nicht real und existiert nur innerhalb des Spiels. Alle genannten Personen und Ereignisse sind erfunden.
-            </p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ELUMA'S Finest Jerky</h3>
+                    <p>Vom Straßenleben zum Business-Imperium. Wir liefern den besten Jerky in San Andreas – garantiert.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Davis Industrial Area, Los Santos</p>
+                    <p><i class="fas fa-phone"></i> (555) 444-ELUM</p>
+                    <p><i class="fas fa-envelope"></i> info@elumasjerky.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Geschäftszeiten</h3>
+                    <p>Mo-Fr: 8:00 - 20:00 Uhr</p>
+                    <p>Sa: 10:00 - 18:00 Uhr</p>
+                    <p>So: Geschlossen</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="disclaimer">
+                <p>&copy; 2023 ELUMA'S Finest Jerky | Ein Fraktionsantrag für GTA 5 Roleplay</p>
+                <p>Disclaimer: Dies ist ein fiktiver Fraktionsantrag für ein GTA 5 Rollenspiel (Roleplay). ELUMA'S Finest Jerky ist nicht real und existiert nur innerhalb des Spiels. Alle genannten Personen und Ereignisse sind erfunden.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Einfache Animation für ein besseres User Experience
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transition = 'opacity 0.8s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>
