@@ -73,25 +73,18 @@
             width: 50px;
             height: 50px;
             border-radius: 10px;
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid var(--color-secondary);
             transition: var(--transition);
+            overflow: hidden;
         }
 
         .logo-img img {
-            width: 40px;
-            height: 40px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-        }
-
-        .logo-img.placeholder {
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
         }
 
         .logo-text {
@@ -172,26 +165,19 @@
             width: 120px;
             height: 120px;
             border-radius: 20px;
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 3px solid var(--color-secondary);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
         }
 
         .hero-logo-img img {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-        }
-
-        .hero-logo-img.placeholder {
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-            color: white;
-            font-size: 2.5rem;
-            font-weight: bold;
         }
 
         .hero h2 {
@@ -481,24 +467,17 @@
             height: 80px;
             margin: 0 auto;
             border-radius: 15px;
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid var(--color-secondary);
+            overflow: hidden;
         }
 
         .footer-logo-img img {
-            width: 60px;
-            height: 60px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-        }
-
-        .footer-logo-img.placeholder {
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
         }
 
         /* Animations */
@@ -594,16 +573,6 @@
             opacity: 0.8;
             margin-top: 0.5rem;
         }
-
-        /* Logo Upload Instructions */
-        .logo-instructions {
-            background: rgba(218, 165, 32, 0.1);
-            border: 1px dashed var(--color-secondary);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -611,8 +580,8 @@
     <header>
         <div class="header-content">
             <a href="#" class="logo">
-                <div class="logo-img placeholder">
-                    EFJ
+                <div class="logo-img">
+                    <img src="logo.png" alt="ELUMA'S Finest Jerky Logo">
                 </div>
                 <div class="logo-text">
                     <h1>ELUMA'S</h1>
@@ -634,8 +603,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-logo">
-            <div class="hero-logo-img placeholder">
-                EFJ
+            <div class="hero-logo-img">
+                <img src="logo.png" alt="ELUMA'S Finest Jerky Logo">
             </div>
         </div>
         <h2>VON DER STRASSE ZUM ERFOLG</h2>
@@ -649,15 +618,6 @@
             </a>
         </div>
     </section>
-
-    <!-- Logo Instructions -->
-    <div class="container">
-        <div class="logo-instructions">
-            <h3><i class="fas fa-info-circle"></i> Logo einbinden</h3>
-            <p>Um dein eigenes Logo hinzuzufügen, ersetze die <code>.placeholder</code> Elemente durch deine Logo-Datei.</p>
-            <p><strong>Beispiel:</strong> <code>&lt;div class="logo-img"&gt;&lt;img src="dein-logo.png" alt="ELUMA'S Logo"&gt;&lt;/div&gt;</code></p>
-        </div>
-    </div>
 
     <!-- Stats Section -->
     <section>
@@ -947,8 +907,8 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <div class="footer-logo-img placeholder">
-                    EFJ
+                <div class="footer-logo-img">
+                    <img src="logo.png" alt="ELUMA'S Finest Jerky Logo">
                 </div>
             </div>
 
